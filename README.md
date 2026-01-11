@@ -1,0 +1,2 @@
+# Web-Based-AI-Powered-Navigation-and-Identity-Verification-for-Visually-Impaired
+Designed an installation-free, web-based navigation assistant for visually impaired users using browser technologies. Implemented real-time object detection with TensorFlow.js and COCO-SSD, providing audio feedback for surroundings. Integrated WebRTC for live camera access and low-latency processing to enhance accessibility and user independence.
