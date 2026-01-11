@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Camera test</title></head>
+<body>
+  <h2>Camera test — allow camera</h2>
+  <video id="v" autoplay playsinline style="width:640px;height:480px;background:#000"></video>
+  <pre id="log"></pre>
+
+  <script>
+    const v = document.getElementById('v');
+    const log = document.getElementById('log');
+    async function start() {
+      try {
+        log.textContent = 'Requesting camera...';
+        const s = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
+        v.srcObject = s;
+        log.textContent = 'Camera stream started OK.\nTracks: ' + s.getTracks().map(t => t.kind + ':' + t.label).join(', ');
+        console.log('Camera OK', s);
+      } catch (err) {
+        console.error('Camera error (test):', err);
+        log.textContent = 'Camera error: ' + (err && err.name ? err.name + ' — ' + err.message : String(err)) + '\n\nCheck console for full stack.';
+        alert('Camera error (see page and console): ' + (err && err.name ? err.name + ' — ' + err.message : String(err)));
+      }
+    }
+    start();
+  </script>
+</body>
+</html>

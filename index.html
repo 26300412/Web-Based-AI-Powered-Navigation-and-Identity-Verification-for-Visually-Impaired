@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AI Navigation Assistant — Polished UI</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Google Fonts (optional, nice look) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="page-bg">
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo-glow" aria-hidden="true">
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="2" width="20" height="20" rx="6" fill="#ffffff" opacity="0.04"/>
+            <path d="M6 12h12" stroke="#fff" stroke-width="1.4" stroke-linecap="round" />
+            <path d="M12 6v12" stroke="#fff" stroke-width="1.4" stroke-linecap="round" />
+          </svg>
+        </div>
+        <div class="brand-text">
+          <div class="title">AI Navigation Assistant</div>
+          <div class="subtitle">Real-time guidance — voice & visual</div>
+        </div>
+      </div>
+
+      <div class="top-actions">
+        <div class="model-chip" id="modelChip">Model: <strong id="modelName">—</strong></div>
+        <div class="status-chip" id="statusChip">Status: <span id="status">Loading...</span></div>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="left-panel card glass">
+        <div class="camera-wrap">
+          <canvas id="cameraCanvas" width="640" height="480" aria-label="Camera view"></canvas>
+
+          <div class="overlay-top">
+            <div class="scene-pill" id="sceneText">Scene info will appear here</div>
+          </div>
+
+          <div class="ar-legend">
+            <div class="legend-item"><span class="dot green"></span> Far</div>
+            <div class="legend-item"><span class="dot yellow"></span> Close</div>
+            <div class="legend-item"><span class="dot red"></span> Very close</div>
+          </div>
+        </div>
+      </section>
+
+      <aside class="right-panel card glass">
+        <div class="controls-block">
+          <div class="main-controls">
+            <button id="startBtn" class="btn start-btn" title="Start detection">
+              <span class="pulse-ring" aria-hidden="true"></span>
+              <svg class="icon" viewBox="0 0 24 24"><path d="M5 3v18l15-9L5 3z" fill="currentColor"/></svg>
+              <span>Start</span>
+            </button>
+
+            <button id="stopBtn" class="btn" title="Stop detection">
+              <svg class="icon" viewBox="0 0 24 24"><path d="M6 6h12v12H6z" fill="currentColor"/></svg>
+              <span>Stop</span>
+            </button>
+
+            <button id="muteBtn" class="btn" title="Mute / Unmute">
+              <svg class="icon" viewBox="0 0 24 24"><path d="M5 9v6h4l5 4V5L9 9H5z" fill="currentColor"/></svg>
+              <span>Mute</span>
+            </button>
+
+            <button id="voiceCmdBtn" class="btn mic-btn" title="Voice command">
+              <svg class="icon" viewBox="0 0 24 24"><path d="M12 14a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v5a3 3 0 0 0 3 3zM19 11v1a7 7 0 0 1-14 0v-1" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span>Voice</span>
+              <span class="mic-wave" aria-hidden="true"></span>
+            </button>
+          </div>
+
+          <div class="settings">
+            <div class="select-row">
+              <label class="label">Language</label>
+              <select id="langSelect" class="select">
+                <option value="en-US">English</option>
+                <option value="hi-IN">हिन्दी (Hindi)</option>
+                <option value="mr-IN">मराठी (Marathi)</option>
+              </select>
+            </div>
+
+            <div class="select-row">
+              <label class="label">Model</label>
+              <select id="modelSelect" class="select">
+                <option value="standard">Standard (accurate)</option>
+                <option value="lite">Lite (faster)</option>
+              </select>
+            </div>
+
+            <div class="select-row">
+              <label class="label">Voice pitch</label>
+              <input id="voicePitch" type="range" min="0.5" max="1.5" step="0.1" value="1" />
+            </div>
+          </div>
+        </div>
+
+        <div class="info-blocks">
+          <div class="info card-sm">
+            <div class="info-title">Last Message</div>
+            <div class="info-value" id="lastMsg">—</div>
+          </div>
+
+          <div class="info card-sm">
+            <div class="info-title">FPS (est)</div>
+            <div class="info-value" id="fpsVal">—</div>
+          </div>
+
+          <div class="info card-sm">
+            <div class="info-title">Confidence</div>
+            <div class="info-value" id="confVal">—</div>
+          </div>
+        </div>
+
+        <div class="help-note">
+          <div class="kicker">Voice commands</div>
+          <div class="commands">Try: <strong>start</strong>, <strong>stop</strong>, <strong>scene</strong>, <strong>summary</strong>, <strong>mute</strong></div>
+        </div>
+
+        <div class="small-footer">
+          <small>Serve via <code>http://localhost:8000</code>. Best on Chrome/Edge.</small>
+        </div>
+      </aside>
+    </main>
+
+    <footer class="page-footer">
+      <div class="credits">Built for demo • Want more polish or a dark theme? Say the word ✨</div>
+    </footer>
+  </div>
+
+  <!-- keep script.js as-is -->
+  <script src="script.js"></script>
+</body>
+</html>
